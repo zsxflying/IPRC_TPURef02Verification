@@ -1,2 +1,6 @@
 dump/*
 gen/*
+simWorkspace/.cache/*
+simWorkspace/.pluginsCachePath/*
+simWorkspace/TPUSimEnv/*
+tmp/*

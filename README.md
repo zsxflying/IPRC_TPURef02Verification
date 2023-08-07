@@ -6,9 +6,8 @@
   - dump // 打印文件目录
   - gen // 生成的verilog代码
   - simWorkspace
-    - TPUSimEnv
-      - gtkmark.gtkw // gtkwave的信号存档
-      - openwavefile.sh // 快速打开波形文件的脚本
+    - gtkmark.gtkw // gtkwave的信号存档
+    - openwavefile.sh // 快速打开波形文件的脚本
   - src 
     - main // spianlhdl模块代码
       - scala
@@ -34,13 +33,14 @@
 ## 如何运行
 - 必备：verilator(iverilog也可以使用，需要修改Config中的配置，但不建议)
 - 运行TPUSim.scala中的object TPUSim
-- 运行`simWorkspace/TPUSimEnv/openwavefile.sh`可快速打开波形文件，并加载信号存档
+- 运行`simWorkspace/openwavefile.sh`可快速打开波形文件，并加载信号存档
 
 ## 可参考的设计（自用）
 - Mem的使用(SRAM.scala)
   - 如何使用`Array[Array[Int]]`初始化Mem
   - 如何定义读写行为
   - 使用Bundle定义存储数据，并使用`:=`赋值
+- 字符串表示的二进制有符号数与Int的转换
 - 黑盒的使用，可以当做模板(TPU.scala)
 - Config配置(Config.scala)
   - 复位有效电平

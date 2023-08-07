@@ -1,0 +1,80 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Mon Aug  7 06:18:07 2023
+[*]
+[dumpfile] "/home/rick/NTTAccelerator/example/TPU_verification/simWorkspace/TPUSimEnv/test.vcd"
+[dumpfile_mtime] "Mon Aug  7 06:17:25 2023"
+[dumpfile_size] 85365
+[savefile] "/home/rick/NTTAccelerator/example/TPU_verification/simWorkspace/gtkmark.gtkw"
+[timestart] 8
+[size] 3288 2002
+[pos] -1 -1
+*-5.663740 222 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] TOP.
+[treeopen] TOP.TPUSimEnv.
+[treeopen] TOP.TPUSimEnv.tpu_1.
+[treeopen] TOP.TPUSimEnv.tpu_1.tpuVerilog.
+[sst_width] 388
+[signals_width] 1056
+[sst_expanded] 1
+[sst_vpaned_height] 607
+@200
+-top
+@24
+TOP.resetn
+TOP.io_tpu_start
+TOP.io_tpu_done
+@200
+-systolic_control
+@28
+TOP.TPUSimEnv.tpu_1.tpuVerilog.systolic_controll.clk
+@24
+TOP.TPUSimEnv.tpu_1.tpuVerilog.systolic_controll.srstn
+TOP.TPUSimEnv.tpu_1.tpuVerilog.systolic_controll.alu_start
+TOP.TPUSimEnv.tpu_1.tpuVerilog.systolic_controll.state[2:0]
+TOP.TPUSimEnv.tpu_1.tpuVerilog.systolic_controll.tpu_done
+TOP.TPUSimEnv.tpu_1.tpuVerilog.systolic_controll.matrix_index[5:0]
+TOP.TPUSimEnv.tpu_1.tpuVerilog.systolic_controll.sram_write_enable
+TOP.TPUSimEnv.tpu_1.tpuVerilog.systolic_controll.data_set[1:0]
+TOP.TPUSimEnv.tpu_1.tpuVerilog.systolic_controll.addr_serial_num[6:0]
+@200
+-systolic
+@28
+TOP.TPUSimEnv.tpu_1.tpuVerilog.systolic_controll.alu_start
+@24
+TOP.TPUSimEnv.tpu_1.tpuVerilog.systolic.cycle_num[8:0]
+TOP.TPUSimEnv.tpu_1.tpuVerilog.systolic.matrix_index[5:0]
+@22
+TOP.TPUSimEnv.tpu_1.tpuVerilog.systolic.sram_rdata_d0[31:0]
+TOP.TPUSimEnv.tpu_1.tpuVerilog.systolic.sram_rdata_d1[31:0]
+TOP.TPUSimEnv.tpu_1.tpuVerilog.systolic.mul_outcome[167:0]
+@23
+TOP.TPUSimEnv.tpu_1.tpuVerilog.systolic.debug_mulres[20:0]
+@800200
+-write_out
+@28
+TOP.TPUSimEnv.tpu_1.tpuVerilog.write_out.sram_write_enable_a0
+@22
+TOP.TPUSimEnv.tpu_1.tpuVerilog.write_out.quantized_data[127:0]
+TOP.TPUSimEnv.tpu_1.tpuVerilog.write_out.sram_waddr_a[5:0]
+@1000200
+-write_out
+@200
+-addr_sel
+@c00022
+TOP.TPUSimEnv.tpu_1.tpuVerilog.addr_sel.sram_raddr_d0[9:0]
+@28
+(0)TOP.TPUSimEnv.tpu_1.tpuVerilog.addr_sel.sram_raddr_d0[9:0]
+(1)TOP.TPUSimEnv.tpu_1.tpuVerilog.addr_sel.sram_raddr_d0[9:0]
+(2)TOP.TPUSimEnv.tpu_1.tpuVerilog.addr_sel.sram_raddr_d0[9:0]
+(3)TOP.TPUSimEnv.tpu_1.tpuVerilog.addr_sel.sram_raddr_d0[9:0]
+(4)TOP.TPUSimEnv.tpu_1.tpuVerilog.addr_sel.sram_raddr_d0[9:0]
+(5)TOP.TPUSimEnv.tpu_1.tpuVerilog.addr_sel.sram_raddr_d0[9:0]
+(6)TOP.TPUSimEnv.tpu_1.tpuVerilog.addr_sel.sram_raddr_d0[9:0]
+(7)TOP.TPUSimEnv.tpu_1.tpuVerilog.addr_sel.sram_raddr_d0[9:0]
+(8)TOP.TPUSimEnv.tpu_1.tpuVerilog.addr_sel.sram_raddr_d0[9:0]
+(9)TOP.TPUSimEnv.tpu_1.tpuVerilog.addr_sel.sram_raddr_d0[9:0]
+@1401200
+-group_end
+[pattern_trace] 1
+[pattern_trace] 0

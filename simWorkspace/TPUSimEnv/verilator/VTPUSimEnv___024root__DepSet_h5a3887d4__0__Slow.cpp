@@ -13,10 +13,10 @@ VL_ATTR_COLD void VTPUSimEnv_TPUSimEnv___eval_initial__TOP__TPUSimEnv(VTPUSimEnv
 VL_ATTR_COLD void VTPUSimEnv_SRAMWriteOnly_2___eval_initial__TOP__TPUSimEnv__sramRes2(VTPUSimEnv_SRAMWriteOnly_2* vlSelf);
 VL_ATTR_COLD void VTPUSimEnv_SRAMWriteOnly_1___eval_initial__TOP__TPUSimEnv__sramRes1(VTPUSimEnv_SRAMWriteOnly_1* vlSelf);
 VL_ATTR_COLD void VTPUSimEnv_SRAMWriteOnly___eval_initial__TOP__TPUSimEnv__sramRes0(VTPUSimEnv_SRAMWriteOnly* vlSelf);
-VL_ATTR_COLD void VTPUSimEnv_SRAMReadOnly_3___eval_initial__TOP__TPUSimEnv__sramD1(VTPUSimEnv_SRAMReadOnly_3* vlSelf);
-VL_ATTR_COLD void VTPUSimEnv_SRAMReadOnly_2___eval_initial__TOP__TPUSimEnv__sramD0(VTPUSimEnv_SRAMReadOnly_2* vlSelf);
-VL_ATTR_COLD void VTPUSimEnv_SRAMReadOnly_1___eval_initial__TOP__TPUSimEnv__sramW1(VTPUSimEnv_SRAMReadOnly_1* vlSelf);
-VL_ATTR_COLD void VTPUSimEnv_SRAMReadOnly___eval_initial__TOP__TPUSimEnv__sramW0(VTPUSimEnv_SRAMReadOnly* vlSelf);
+VL_ATTR_COLD void VTPUSimEnv_SRAMReadOnly_3___eval_initial__TOP__TPUSimEnv__sramW1(VTPUSimEnv_SRAMReadOnly_3* vlSelf);
+VL_ATTR_COLD void VTPUSimEnv_SRAMReadOnly_2___eval_initial__TOP__TPUSimEnv__sramW0(VTPUSimEnv_SRAMReadOnly_2* vlSelf);
+VL_ATTR_COLD void VTPUSimEnv_SRAMReadOnly_1___eval_initial__TOP__TPUSimEnv__sramD1(VTPUSimEnv_SRAMReadOnly_1* vlSelf);
+VL_ATTR_COLD void VTPUSimEnv_SRAMReadOnly___eval_initial__TOP__TPUSimEnv__sramD0(VTPUSimEnv_SRAMReadOnly* vlSelf);
 
 VL_ATTR_COLD void VTPUSimEnv___024root___eval_initial(VTPUSimEnv___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
@@ -29,10 +29,10 @@ VL_ATTR_COLD void VTPUSimEnv___024root___eval_initial(VTPUSimEnv___024root* vlSe
     VTPUSimEnv_SRAMWriteOnly_2___eval_initial__TOP__TPUSimEnv__sramRes2((&vlSymsp->TOP__TPUSimEnv__sramRes2));
     VTPUSimEnv_SRAMWriteOnly_1___eval_initial__TOP__TPUSimEnv__sramRes1((&vlSymsp->TOP__TPUSimEnv__sramRes1));
     VTPUSimEnv_SRAMWriteOnly___eval_initial__TOP__TPUSimEnv__sramRes0((&vlSymsp->TOP__TPUSimEnv__sramRes0));
-    VTPUSimEnv_SRAMReadOnly_3___eval_initial__TOP__TPUSimEnv__sramD1((&vlSymsp->TOP__TPUSimEnv__sramD1));
-    VTPUSimEnv_SRAMReadOnly_2___eval_initial__TOP__TPUSimEnv__sramD0((&vlSymsp->TOP__TPUSimEnv__sramD0));
-    VTPUSimEnv_SRAMReadOnly_1___eval_initial__TOP__TPUSimEnv__sramW1((&vlSymsp->TOP__TPUSimEnv__sramW1));
-    VTPUSimEnv_SRAMReadOnly___eval_initial__TOP__TPUSimEnv__sramW0((&vlSymsp->TOP__TPUSimEnv__sramW0));
+    VTPUSimEnv_SRAMReadOnly_3___eval_initial__TOP__TPUSimEnv__sramW1((&vlSymsp->TOP__TPUSimEnv__sramW1));
+    VTPUSimEnv_SRAMReadOnly_2___eval_initial__TOP__TPUSimEnv__sramW0((&vlSymsp->TOP__TPUSimEnv__sramW0));
+    VTPUSimEnv_SRAMReadOnly_1___eval_initial__TOP__TPUSimEnv__sramD1((&vlSymsp->TOP__TPUSimEnv__sramD1));
+    VTPUSimEnv_SRAMReadOnly___eval_initial__TOP__TPUSimEnv__sramD0((&vlSymsp->TOP__TPUSimEnv__sramD0));
     vlSelf->__Vtrigprevexpr___TOP__clk__0 = vlSelf->clk;
 }
 

@@ -65,12 +65,12 @@ VTPUSimEnv__Syms::VTPUSimEnv__Syms(VerilatedContext* contextp, const char* namep
     __Vscope_TPUSimEnv__sramW1.configure(this, name(), "TPUSimEnv.sramW1", "sramW1", 0, VerilatedScope::SCOPE_OTHER);
     // Setup export functions
     for (int __Vfinal = 0; __Vfinal < 2; ++__Vfinal) {
-        __Vscope_TPUSimEnv__sramD0.varInsert(__Vfinal,"mem", &(TOP__TPUSimEnv__sramD0.mem), false, VLVT_UINT32,VLVD_NODIR|VLVF_PUB_RW,2 ,31,0 ,0,127);
-        __Vscope_TPUSimEnv__sramD1.varInsert(__Vfinal,"mem", &(TOP__TPUSimEnv__sramD1.mem), false, VLVT_UINT32,VLVD_NODIR|VLVF_PUB_RW,2 ,31,0 ,0,127);
-        __Vscope_TPUSimEnv__sramRes0.varInsert(__Vfinal,"mem", &(TOP__TPUSimEnv__sramRes0.mem), false, VLVT_WDATA,VLVD_NODIR|VLVF_PUB_RW,2 ,127,0 ,0,15);
-        __Vscope_TPUSimEnv__sramRes1.varInsert(__Vfinal,"mem", &(TOP__TPUSimEnv__sramRes1.mem), false, VLVT_WDATA,VLVD_NODIR|VLVF_PUB_RW,2 ,127,0 ,0,15);
-        __Vscope_TPUSimEnv__sramRes2.varInsert(__Vfinal,"mem", &(TOP__TPUSimEnv__sramRes2.mem), false, VLVT_WDATA,VLVD_NODIR|VLVF_PUB_RW,2 ,127,0 ,0,15);
-        __Vscope_TPUSimEnv__sramW0.varInsert(__Vfinal,"mem", &(TOP__TPUSimEnv__sramW0.mem), false, VLVT_UINT32,VLVD_NODIR|VLVF_PUB_RW,2 ,31,0 ,0,127);
-        __Vscope_TPUSimEnv__sramW1.varInsert(__Vfinal,"mem", &(TOP__TPUSimEnv__sramW1.mem), false, VLVT_UINT32,VLVD_NODIR|VLVF_PUB_RW,2 ,31,0 ,0,127);
+        __Vscope_TPUSimEnv__sramD0.varInsert(__Vfinal,"mem", &(TOP__TPUSimEnv__sramD0.mem), false, VLVT_UINT32,VLVD_NODIR|VLVF_PUB_RW,2 ,31,0 ,0,30);
+        __Vscope_TPUSimEnv__sramD1.varInsert(__Vfinal,"mem", &(TOP__TPUSimEnv__sramD1.mem), false, VLVT_UINT32,VLVD_NODIR|VLVF_PUB_RW,2 ,31,0 ,0,30);
+        __Vscope_TPUSimEnv__sramRes0.varInsert(__Vfinal,"mem", &(TOP__TPUSimEnv__sramRes0.mem), false, VLVT_WDATA,VLVD_NODIR|VLVF_PUB_RW,2 ,127,0 ,0,14);
+        __Vscope_TPUSimEnv__sramRes1.varInsert(__Vfinal,"mem", &(TOP__TPUSimEnv__sramRes1.mem), false, VLVT_WDATA,VLVD_NODIR|VLVF_PUB_RW,2 ,127,0 ,0,14);
+        __Vscope_TPUSimEnv__sramRes2.varInsert(__Vfinal,"mem", &(TOP__TPUSimEnv__sramRes2.mem), false, VLVT_WDATA,VLVD_NODIR|VLVF_PUB_RW,2 ,127,0 ,0,14);
+        __Vscope_TPUSimEnv__sramW0.varInsert(__Vfinal,"mem", &(TOP__TPUSimEnv__sramW0.mem), false, VLVT_UINT32,VLVD_NODIR|VLVF_PUB_RW,2 ,31,0 ,0,30);
+        __Vscope_TPUSimEnv__sramW1.varInsert(__Vfinal,"mem", &(TOP__TPUSimEnv__sramW1.mem), false, VLVT_UINT32,VLVD_NODIR|VLVF_PUB_RW,2 ,31,0 ,0,30);
     }
 }

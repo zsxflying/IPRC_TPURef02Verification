@@ -44,7 +44,7 @@ VL_ATTR_COLD void VTPUSimEnv___024root___eval_settle(VTPUSimEnv___024root* vlSel
 #ifdef VL_DEBUG
                 VTPUSimEnv___024root___dump_triggers__stl(vlSelf);
 #endif
-                VL_FATAL_MT("/home/rick/NTTAccelerator/example/TPU_verification/tmp/job_1/TPUSimEnv.v", 6, "", "Settle region did not converge.");
+                VL_FATAL_MT("/home/rick/NTTAccelerator/example/TPU_verification/tmp/job_1/TPUSimEnv.v", 7, "", "Settle region did not converge.");
             }
             vlSelf->__VstlIterCount = ((IData)(1U) 
                                        + vlSelf->__VstlIterCount);
@@ -120,7 +120,7 @@ VL_ATTR_COLD void VTPUSimEnv___024root___ctor_var_reset(VTPUSimEnv___024root* vl
     // Body
     vlSelf->io_tpu_start = VL_RAND_RESET_I(1);
     vlSelf->io_tpu_done = VL_RAND_RESET_I(1);
-    vlSelf->reset = VL_RAND_RESET_I(1);
+    vlSelf->resetn = VL_RAND_RESET_I(1);
     vlSelf->clk = 0;
     vlSelf->__Vtrigprevexpr___TOP__clk__0 = VL_RAND_RESET_I(1);
     vlSelf->__VactDidInit = 0;

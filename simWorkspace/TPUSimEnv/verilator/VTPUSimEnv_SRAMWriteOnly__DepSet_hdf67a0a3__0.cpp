@@ -22,13 +22,19 @@ VL_INLINE_OPT void VTPUSimEnv_SRAMWriteOnly___nba_sequent__TOP__TPUSimEnv__sramR
     __Vdlyvset__mem__v0 = 0;
     // Body
     __Vdlyvset__mem__v0 = 0U;
-    if (vlSymsp->TOP__TPUSimEnv.__PVT__tpu_1__DOT__tpuVerilog_sram_write_enable_a0) {
-        __Vdlyvval__mem__v0[0U] = vlSymsp->TOP__TPUSimEnv.__PVT__tpu_1__DOT__tpuVerilog_sram_wdata_a[0U];
-        __Vdlyvval__mem__v0[1U] = vlSymsp->TOP__TPUSimEnv.__PVT__tpu_1__DOT__tpuVerilog_sram_wdata_a[1U];
-        __Vdlyvval__mem__v0[2U] = vlSymsp->TOP__TPUSimEnv.__PVT__tpu_1__DOT__tpuVerilog_sram_wdata_a[2U];
-        __Vdlyvval__mem__v0[3U] = vlSymsp->TOP__TPUSimEnv.__PVT__tpu_1__DOT__tpuVerilog_sram_wdata_a[3U];
-        __Vdlyvset__mem__v0 = 1U;
-        __Vdlyvdim0__mem__v0 = (0xfU & (IData)(vlSymsp->TOP__TPUSimEnv.__PVT__tpu_1__DOT__tpuVerilog_sram_waddr_a));
+    if ((1U & (~ (IData)(vlSymsp->TOP__TPUSimEnv.__PVT__tpu_1__DOT__tpuVerilog_sram_write_enable_a0)))) {
+        vlSelf->__Vlvbound_ha17ce783__0[0U] = vlSymsp->TOP__TPUSimEnv.__PVT__tpu_1__DOT__tpuVerilog_sram_wdata_a[0U];
+        vlSelf->__Vlvbound_ha17ce783__0[1U] = vlSymsp->TOP__TPUSimEnv.__PVT__tpu_1__DOT__tpuVerilog_sram_wdata_a[1U];
+        vlSelf->__Vlvbound_ha17ce783__0[2U] = vlSymsp->TOP__TPUSimEnv.__PVT__tpu_1__DOT__tpuVerilog_sram_wdata_a[2U];
+        vlSelf->__Vlvbound_ha17ce783__0[3U] = vlSymsp->TOP__TPUSimEnv.__PVT__tpu_1__DOT__tpuVerilog_sram_wdata_a[3U];
+        if ((0xeU >= (0xfU & (IData)(vlSymsp->TOP__TPUSimEnv.__PVT__tpu_1__DOT__tpuVerilog_sram_waddr_a)))) {
+            __Vdlyvval__mem__v0[0U] = vlSelf->__Vlvbound_ha17ce783__0[0U];
+            __Vdlyvval__mem__v0[1U] = vlSelf->__Vlvbound_ha17ce783__0[1U];
+            __Vdlyvval__mem__v0[2U] = vlSelf->__Vlvbound_ha17ce783__0[2U];
+            __Vdlyvval__mem__v0[3U] = vlSelf->__Vlvbound_ha17ce783__0[3U];
+            __Vdlyvset__mem__v0 = 1U;
+            __Vdlyvdim0__mem__v0 = (0xfU & (IData)(vlSymsp->TOP__TPUSimEnv.__PVT__tpu_1__DOT__tpuVerilog_sram_waddr_a));
+        }
     }
     if (__Vdlyvset__mem__v0) {
         vlSelf->mem[__Vdlyvdim0__mem__v0][0U] = __Vdlyvval__mem__v0[0U];

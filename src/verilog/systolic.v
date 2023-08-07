@@ -150,5 +150,9 @@ always@(*) begin
 
 end
 
+// debug
+wire signed [20:0] debug_mulres;
+assign debug_mulres = matrix_mul_2D[0][0];
+
 endmodule
 

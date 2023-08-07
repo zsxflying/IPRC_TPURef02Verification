@@ -83,10 +83,10 @@ void VTPUSimEnv_TPUSimEnv___nba_sequent__TOP__TPUSimEnv__7(VTPUSimEnv_TPUSimEnv*
 void VTPUSimEnv_TPUSimEnv___nba_sequent__TOP__TPUSimEnv__8(VTPUSimEnv_TPUSimEnv* vlSelf);
 void VTPUSimEnv_TPUSimEnv___nba_sequent__TOP__TPUSimEnv__9(VTPUSimEnv_TPUSimEnv* vlSelf);
 void VTPUSimEnv_TPUSimEnv___nba_sequent__TOP__TPUSimEnv__10(VTPUSimEnv_TPUSimEnv* vlSelf);
-void VTPUSimEnv_SRAMReadOnly_2___nba_sequent__TOP__TPUSimEnv__sramD0__0(VTPUSimEnv_SRAMReadOnly_2* vlSelf);
-void VTPUSimEnv_SRAMReadOnly_3___nba_sequent__TOP__TPUSimEnv__sramD1__0(VTPUSimEnv_SRAMReadOnly_3* vlSelf);
-void VTPUSimEnv_SRAMReadOnly___nba_sequent__TOP__TPUSimEnv__sramW0__0(VTPUSimEnv_SRAMReadOnly* vlSelf);
-void VTPUSimEnv_SRAMReadOnly_1___nba_sequent__TOP__TPUSimEnv__sramW1__0(VTPUSimEnv_SRAMReadOnly_1* vlSelf);
+void VTPUSimEnv_SRAMReadOnly___nba_sequent__TOP__TPUSimEnv__sramD0__0(VTPUSimEnv_SRAMReadOnly* vlSelf);
+void VTPUSimEnv_SRAMReadOnly_1___nba_sequent__TOP__TPUSimEnv__sramD1__0(VTPUSimEnv_SRAMReadOnly_1* vlSelf);
+void VTPUSimEnv_SRAMReadOnly_2___nba_sequent__TOP__TPUSimEnv__sramW0__0(VTPUSimEnv_SRAMReadOnly_2* vlSelf);
+void VTPUSimEnv_SRAMReadOnly_3___nba_sequent__TOP__TPUSimEnv__sramW1__0(VTPUSimEnv_SRAMReadOnly_3* vlSelf);
 void VTPUSimEnv_TPUSimEnv___nba_sequent__TOP__TPUSimEnv__11(VTPUSimEnv_TPUSimEnv* vlSelf);
 
 void VTPUSimEnv___024root___eval_nba(VTPUSimEnv___024root* vlSelf) {
@@ -110,10 +110,10 @@ void VTPUSimEnv___024root___eval_nba(VTPUSimEnv___024root* vlSelf) {
         VTPUSimEnv_TPUSimEnv___nba_sequent__TOP__TPUSimEnv__8((&vlSymsp->TOP__TPUSimEnv));
         VTPUSimEnv_TPUSimEnv___nba_sequent__TOP__TPUSimEnv__9((&vlSymsp->TOP__TPUSimEnv));
         VTPUSimEnv_TPUSimEnv___nba_sequent__TOP__TPUSimEnv__10((&vlSymsp->TOP__TPUSimEnv));
-        VTPUSimEnv_SRAMReadOnly_2___nba_sequent__TOP__TPUSimEnv__sramD0__0((&vlSymsp->TOP__TPUSimEnv__sramD0));
-        VTPUSimEnv_SRAMReadOnly_3___nba_sequent__TOP__TPUSimEnv__sramD1__0((&vlSymsp->TOP__TPUSimEnv__sramD1));
-        VTPUSimEnv_SRAMReadOnly___nba_sequent__TOP__TPUSimEnv__sramW0__0((&vlSymsp->TOP__TPUSimEnv__sramW0));
-        VTPUSimEnv_SRAMReadOnly_1___nba_sequent__TOP__TPUSimEnv__sramW1__0((&vlSymsp->TOP__TPUSimEnv__sramW1));
+        VTPUSimEnv_SRAMReadOnly___nba_sequent__TOP__TPUSimEnv__sramD0__0((&vlSymsp->TOP__TPUSimEnv__sramD0));
+        VTPUSimEnv_SRAMReadOnly_1___nba_sequent__TOP__TPUSimEnv__sramD1__0((&vlSymsp->TOP__TPUSimEnv__sramD1));
+        VTPUSimEnv_SRAMReadOnly_2___nba_sequent__TOP__TPUSimEnv__sramW0__0((&vlSymsp->TOP__TPUSimEnv__sramW0));
+        VTPUSimEnv_SRAMReadOnly_3___nba_sequent__TOP__TPUSimEnv__sramW1__0((&vlSymsp->TOP__TPUSimEnv__sramW1));
         VTPUSimEnv___024root___nba_sequent__TOP__0(vlSelf);
         VTPUSimEnv_TPUSimEnv___nba_sequent__TOP__TPUSimEnv__11((&vlSymsp->TOP__TPUSimEnv));
     }

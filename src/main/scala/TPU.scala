@@ -53,13 +53,13 @@ class TPU(
   io.sram_raddr_w1 <> tpuVerilog.io.sram_raddr_w1
   io.sram_raddr_d0 <> tpuVerilog.io.sram_raddr_d0
   io.sram_raddr_d1 <> tpuVerilog.io.sram_raddr_d1
-  io.sram_write_enable_a <> tpuVerilog.io.sram_write_enable_a0
+  io.sram_write_enable_a <> !tpuVerilog.io.sram_write_enable_a0 // 原项目写信号低电平有效
   io.sram_wdata_a <> tpuVerilog.io.sram_wdata_a
   io.sram_waddr_a <> tpuVerilog.io.sram_waddr_a
-  io.sram_write_enable_b <> tpuVerilog.io.sram_write_enable_b0
+  io.sram_write_enable_b <> !tpuVerilog.io.sram_write_enable_b0
   io.sram_wdata_b <> tpuVerilog.io.sram_wdata_b
   io.sram_waddr_b <> tpuVerilog.io.sram_waddr_b
-  io.sram_write_enable_c <> tpuVerilog.io.sram_write_enable_c0
+  io.sram_write_enable_c <> !tpuVerilog.io.sram_write_enable_c0
   io.sram_wdata_c <> tpuVerilog.io.sram_wdata_c
   io.sram_waddr_c <> tpuVerilog.io.sram_waddr_c
   io.tpu_done <> tpuVerilog.io.tpu_done

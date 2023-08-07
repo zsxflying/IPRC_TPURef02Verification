@@ -15,7 +15,7 @@ VTPUSimEnv::VTPUSimEnv(VerilatedContext* _vcontextp__, const char* _vcname__)
     , clk{vlSymsp->TOP.clk}
     , io_tpu_start{vlSymsp->TOP.io_tpu_start}
     , io_tpu_done{vlSymsp->TOP.io_tpu_done}
-    , reset{vlSymsp->TOP.reset}
+    , resetn{vlSymsp->TOP.resetn}
     , TPUSimEnv{vlSymsp->TOP.TPUSimEnv}
     , rootp{&(vlSymsp->TOP)}
 {

@@ -48,38 +48,6 @@ object MatrixOperation {
   }
 
   /**
-   * 打印矩阵到控制台
-   * @param mat
-   */
-  def printMat(mat: Array[Array[Int]]) = {
-    for (row <- mat) {
-      println(row.mkString(", "))
-    }
-  }
-
-  /**
-   * 打印矩阵到文件
-   * @param mat
-   * @param fileName
-   */
-  def dumpMat2File(mat: Array[Array[Int]], fileName: String) = {
-    val dumpDir = Config.dumpDir
-    val dir = new File(dumpDir)
-    if (!dir.exists()) {
-      dir.mkdir()
-    }
-
-    val file = new File(dumpDir + fileName)
-    val writer = new PrintWriter(file)
-
-    for (row <- mat) {
-      writer.println(row.mkString(", "))
-    }
-
-    writer.close()
-  }
-
-  /**
    * 生成sram存储数据
    * @param mat0
    * @param mat1
@@ -96,16 +64,27 @@ object MatrixOperation {
 
     for (i <- 0 until 3 * n) {
       for (j <- 0 until n) {
-        result(i + j)(j) = {
-          if (i < n) {
-            mat0(i)(j)
-          } else if (i < 2 * n) {
-            mat1(i - n)(j)
-          } else {
-            mat2(i - 2 * n)(j)
+        if (j < n/2){
+          result(i + j)(j) = {
+            if (i < n) {
+              mat0(i)(j)
+            } else if (i < 2 * n) {
+              mat1(i - n)(j)
+            } else {
+              mat2(i - 2 * n)(j)
+            }
+          }
+        } else {
+          result(i+j-n/2)(j) = {
+            if (i < n) {
+              mat0(i)(j)
+            } else if (i < 2 * n) {
+              mat1(i - n)(j)
+            } else {
+              mat2(i - 2 * n)(j)
+            }
           }
         }
-
       }
     }
 
@@ -139,6 +118,8 @@ object MatrixOperation {
 
 object MatrixOperationTest extends App{
   import MatrixOperation._
+  import myUtil.PrintDump._
+
   val dataWidth = 8
   val matSize = 3
   val sramResDepth = matSize * 2 - 1
@@ -155,13 +136,13 @@ object MatrixOperationTest extends App{
   val sramW = generateSRAMInput(matrixRightSet(0), matrixRightSet(1), matrixRightSet(2))
 
   println("matLeft:")
-  matrixLeftSet.foreach(printMat(_))
+  matrixLeftSet.foreach(printMatrix(_))
   println("sramD:")
-  printMat(sramD)
+  printMatrix(sramD)
   println("matRight:")
-  matrixRightSet.foreach(printMat(_))
+  matrixRightSet.foreach(printMatrix(_))
   println("sramW:")
-  printMat(sramW)
+  printMatrix(sramW)
 
   // 结果sram
   val sramRes0 = Array.fill(sramResDepth)(Array.fill(matSize)(Random.nextInt(10)))
@@ -169,8 +150,8 @@ object MatrixOperationTest extends App{
   // 结果sram转换后数据
   val transRes0 = transformResultMatrix(sramRes0)
   println("sramRes0:")
-  printMat(sramRes0)
+  printMatrix(sramRes0)
   println("transRes0")
-  printMat(transRes0)
+  printMatrix(transRes0)
 }
 

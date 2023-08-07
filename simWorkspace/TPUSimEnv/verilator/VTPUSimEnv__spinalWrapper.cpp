@@ -172,16 +172,16 @@ public:
       timeCheck = 0;
       lastFlushAt = high_resolution_clock::now();
       waveEnabled = true;
-      signalAccess[0] = new IDataSignalAccess( top.TPUSimEnv->sramW0->mem[0] );
-      signalAccess[1] = new IDataSignalAccess( top.TPUSimEnv->sramW1->mem[0] );
-      signalAccess[2] = new IDataSignalAccess( top.TPUSimEnv->sramD0->mem[0] );
-      signalAccess[3] = new IDataSignalAccess( top.TPUSimEnv->sramD1->mem[0] );
+      signalAccess[0] = new IDataSignalAccess( top.TPUSimEnv->sramD0->mem[0] );
+      signalAccess[1] = new IDataSignalAccess( top.TPUSimEnv->sramD1->mem[0] );
+      signalAccess[2] = new IDataSignalAccess( top.TPUSimEnv->sramW0->mem[0] );
+      signalAccess[3] = new IDataSignalAccess( top.TPUSimEnv->sramW1->mem[0] );
       signalAccess[4] = new WDataSignalAccess((WData*) top.TPUSimEnv->sramRes0->mem[0]  , 128, false);
       signalAccess[5] = new WDataSignalAccess((WData*) top.TPUSimEnv->sramRes1->mem[0]  , 128, false);
       signalAccess[6] = new WDataSignalAccess((WData*) top.TPUSimEnv->sramRes2->mem[0]  , 128, false);
       signalAccess[7] = new CDataSignalAccess( top.io_tpu_start );
       signalAccess[8] = new CDataSignalAccess( top.io_tpu_done );
-      signalAccess[9] = new CDataSignalAccess( top.reset );
+      signalAccess[9] = new CDataSignalAccess( top.resetn );
       signalAccess[10] = new CDataSignalAccess( top.clk );
 
       #ifdef TRACE

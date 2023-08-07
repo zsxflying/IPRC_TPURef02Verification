@@ -3,28 +3,61 @@ import spinal.core.sim._
 import spinal.lib._
 
 // 只验证了默认参数的正确性
-class TPUSimEnv(
-                 period:Int,
-                 sramDataWidth:Int = 32,
-                 arraySize:Int = 8,
-                 dataWidth:Int = 8,
-                 outputDataWidth:Int = 16
-               ) extends Component {
+class TPUSimEnv(period:Int) extends Component {
+
   val io = new Bundle{
     val tpu_start = in Bool()
     val tpu_done = out Bool()
   }
+
+  import MatrixOperation._
+  import myUtil.PrintDump._
+  val tpuconfig = new TPUConfig()
+
+  // 生成矩阵
+  val matrixLeftSet, matrixRightSet = Array.fill(3)(generateRandomMatrix(tpuconfig.inputDataWidth, tpuconfig.arraySize))
+
+  println("matLeft:")
+  matrixLeftSet.foreach(printMatrix(_))
+  matrixLeftSet.foreach(dumpMatrix2File(_, "matrixLeftSet"))
+  println("matRight:")
+  matrixRightSet.foreach(printMatrix(_))
+  matrixRightSet.foreach(dumpMatrix2File(_, "matrixRightSet"))
+
+  // 参考结果
+  val refResult = matrixLeftSet.zip(matrixRightSet).map { element =>
+    multiply(element._1, element._2)
+  }
+
+  // 输入sram
+  val transposedMatrixLeftSet = matrixLeftSet.map(_.transpose)// sramD的输入需要转置一下
+  val sramDInput = generateSRAMInput(transposedMatrixLeftSet(0), transposedMatrixLeftSet(1), transposedMatrixLeftSet(2))
+  val sramWInput = generateSRAMInput(matrixRightSet(0), matrixRightSet(1), matrixRightSet(2))
+
+  println("sramD:")
+  printMatrix(sramDInput)
+  dumpMatrix2File(sramDInput, "sramD")
+
+  println("sramW:")
+  printMatrix(sramWInput)
+  dumpMatrix2File(sramWInput, "sramW")
+
   // 模块例化
   val tpu = new TPU(
-    SRAM_DATA_WIDTH = sramDataWidth,
-    ARRAY_SIZE = arraySize,
-    DATA_WIDTH = dataWidth,
-    OUTPUT_DATA_WIDTH = outputDataWidth
+    SRAM_DATA_WIDTH = tpuconfig.inputDataWidth * tpuconfig.peSize,
+    ARRAY_SIZE = tpuconfig.arraySize,
+    DATA_WIDTH = tpuconfig.inputDataWidth,
+    OUTPUT_DATA_WIDTH = tpuconfig.outputDataWidth
   )
 
-  // TODO: 深度可能需要减1
-  val sramW0, sramW1, sramD0, sramD1 = new SRAMReadOnly(width = sramDataWidth, depth = 128)
-  val sramRes0, sramRes1, sramRes2 = new SRAMWriteOnly(width = 128, depth = 16)
+  val sramDDepth = 32
+  val sramDDataNumPerLine = tpuconfig.arraySize / 2
+  val sramD0 = SRAMReadOnly(sramDInput.map{x => x.slice(0,tpuconfig.peSize)})
+  val sramD1 = SRAMReadOnly(sramDInput.map{x => x.slice(tpuconfig.peSize,tpuconfig.arraySize)})
+  val sramW0 = SRAMReadOnly(sramWInput.map{x => x.slice(0,tpuconfig.peSize)})
+  val sramW1 = SRAMReadOnly(sramWInput.map{x => x.slice(tpuconfig.peSize,tpuconfig.arraySize)})
+
+  val sramRes0, sramRes1, sramRes2 = new SRAMWriteOnly(tpuconfig.outputDataWidth, tpuconfig.arraySize, tpuconfig.sramResDepth)
 
   // 端口连接
   val tpuio = tpu.io
@@ -56,68 +89,35 @@ class TPUSimEnv(
   tpuio.sram_waddr_c.resized <> sramRes2.io.addr
   tpuio.sram_wdata_c <> sramRes2.io.wdata
 
-  import MatrixOperation._
-  // 生成矩阵
-  val matrixLeftSet, matrixRightSet = Array.fill(3)(generateRandomMatrix(dataWidth, arraySize))
 
-  // 参考结果
-  val refResult = matrixLeftSet.zip(matrixRightSet).map { element =>
-    multiply(element._1, element._2)
-  }
-
-  // 输入sram
-  val sramDInput = generateSRAMInput(matrixLeftSet(0), matrixLeftSet(1), matrixLeftSet(2))
-  val sramWInput = generateSRAMInput(matrixRightSet(0), matrixRightSet(1), matrixRightSet(2))
-
-  println("matLeft:")
-  matrixLeftSet.foreach(printMat(_))
-  matrixLeftSet.foreach(dumpMat2File(_,"matrixLeftSet"))
-  println("sramD:")
-  printMat(sramDInput)
-  dumpMat2File(sramDInput,"sramD")
-  println("matRight:")
-  matrixRightSet.foreach(printMat(_))
-  matrixRightSet.foreach(dumpMat2File(_,"matrixRightSet"))
-  println("sramW:")
-  printMat(sramWInput)
-
-  // 结果sram
-  val sramResDepth = arraySize * 2 - 1
-  initSram()
-//  val sramRes0 = Array.fill(sramResDepth)(Array.fill(arraySize)(0))
 
   // 结果sram转换后数据
 //  val transRes0 = transformResultMatrix(sramRes0)
 
   def init() = {
     clockDomain.forkStimulus(period)
-    SimTimeout(1000 * period) // 超时限制
+    SimTimeout(100 * period) // 超时限制
     io.tpu_start #= false
-    clockDomain.waitSampling(2 * period)
-    println("------------")
-    // 加载sramW和sramD
-//    initSram()
-    clockDomain.waitSampling()
+    clockDomain.waitSampling(2 )
+    io.tpu_start #= true
   }
 
-  def initSram() = {
-    val sramWidth = dataWidth * arraySize
-    for(i <- 0 until sramDInput.length){
-      val data = sramDInput(i).map(B(_, dataWidth bits)).reduce(_ ## _)
-      setBigInt(sramD0.mem,i,data(0 until sramWidth).toBigInt)
-      setBigInt(sramD1.mem,i,data(sramWidth until 2 * sramWidth).toBigInt)
-      val weight = sramWInput(i).map(B(_, dataWidth bits)).reduce(_ ## _)
-
-      setBigInt(sramW0.mem,i,weight(0 until sramWidth).toBigInt)
-      setBigInt(sramW1.mem,i,weight(sramWidth until 2 * sramWidth).toBigInt)
-      println(data.toBigInt) // TODO：测试结束删除
-    }
-  }
 
   def simDone() = {
-    while(!tpuio.tpu_done.toBoolean){
-      clockDomain.waitSampling(period)
+    while(io.tpu_done.toBoolean == false){
+      clockDomain.waitSampling()
     }
+
+    List(sramRes0, sramRes1, sramRes2).zipWithIndex.foreach{ case(x,idx) =>
+      dumpMatrix2File(x.getMemInt(),s"sramRes${idx}_int")
+      dumpMatrix2File(x.getMemBin(),s"sramRes${idx}_bin")
+
+      dumpMatrix2File(transformResultMatrix(x.getMemInt()),s"result${idx}")
+    }
+
+    printMatrix(refResult(0))
+    printMatrix(refResult(1))
+    printMatrix(refResult(2))
   }
 
 
@@ -125,7 +125,7 @@ class TPUSimEnv(
 
 object TPUSim extends App{
 //  Config.spinal.generateVerilog(new TPUSimEnv(10))
-  Config.sim.compile(new TPUSimEnv(10)).doSim { dut =>
+  Config.sim.compile(new TPUSimEnv(10)).doSim{ dut =>
     dut.init()
     dut.simDone()
   }
